@@ -1,0 +1,9 @@
+<h1 class="animated fadeIn">Término de búsqueda <small>({{termino}})</small></h1>
+<hr>
+<div *ngIf="heroesEncontrados.length == 0" class="alert alert-danger animated fadeIn" role="alert">
+    No se encontraron búsquedas relacionadas con el término '{{termino}}'!
+</div>
+
+<div class="card-columns">
+    <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.index" *ngFor="let heroe of heroesEncontrados"></app-heroe-tarjeta>
+</div>

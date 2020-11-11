@@ -72,11 +72,15 @@ export class HeroesService {
   }
 
   buscarHeroes(termino: string): Heroe[] {
-    let arregloHeroes: Heroe[] = [];
+    const arregloHeroes: Heroe[] = [];
     termino = termino.toLowerCase();
-    for (let heroe of this.heroes) {
-      let nombre = heroe.nombre.toLowerCase();
+
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.heroes.length; i++) {
+      const heroe = this.heroes[i];
+      const nombre = heroe.nombre.toLowerCase();
       if (nombre.indexOf(termino) >= 0) {
+        heroe.index = i;
         arregloHeroes.push(heroe);
       }
     }
@@ -90,4 +94,5 @@ export interface Heroe {
   img: string;
   aparicion: string;
   casa: string;
+  index?: number;
 }
